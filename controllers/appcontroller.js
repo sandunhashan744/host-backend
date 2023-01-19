@@ -1,8 +1,9 @@
 import UserModel from "../models/Usermodel.js";
 import bcypt from 'bcrypt';
 import jwt from "jsonwebtoken";
-import ENV from '../config.js';
 import otpGenerate from 'otp-generator';
+import dotenv from 'dotenv';
+dotenv.config()
 
 //--verify user--
 export async function verifyUser(req,res,next){
@@ -99,7 +100,7 @@ export async function login(req, res){
                 const token = jwt.sign({
                                 userId: user._id,
                                 username: user.email
-                            }, ENV.JWT_TOKEN, {expiresIn:"12h"});
+                            }, process.env.JWT_TOKEN, {expiresIn:"12h"});
                 
                 return res.status(200).send({
                     msg:'Login Successfully...!',
