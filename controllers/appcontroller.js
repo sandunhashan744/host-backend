@@ -176,15 +176,14 @@ export async function createResetSession(req, res){
 //************** Put methord **************
 // user Update
 export async function updateUser(req, res){
-    console.log('req.user ')
+    
     try {
         //const id = req.query.id;
         const { userId } = req.user;
 
         if(userId){
             const body = req.body;
-console.log(body)
-
+    
             UserModel.updateOne({ _id : userId }, body, function(err, data){
                 if(err) throw err;
 

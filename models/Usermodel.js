@@ -33,7 +33,11 @@ export const UserSchema = new mongoose.Schema({
         required : [true, "Please Provide a Password"],
         unique : false
     },
-    profile : {type : String}
+    profile : {type : String},
+    userRoles : {
+        type : Number,
+        default : 1
+    }
 });
 
 export default mongoose.model.users || mongoose.model('users', UserSchema)
